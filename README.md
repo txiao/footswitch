@@ -3,9 +3,9 @@
 Footswitch
 ----------
 
-Command line utility for programming foot switches sold by [PCsensor][1]. It works for both single pedal devices and three pedal devices. All supported devices have `vendorId:productId` = `0c45:7403` and can be listed with `lsusb`:
+Command line utility for programming foot switches sold by [PCsensor][1]. It works for both single pedal devices and three pedal devices. All supported devices have `vendorId:productId` = `0c45:7403` or `0c45:7404`, and can be listed with `lsusb`:
 
-    $ lsusb -d 0c45:7403
+    $ lsusb | grep 0c45:740[34]
     Bus 002 Device 051: ID 0c45:7403 Microdia 
 
 The same kind of foot switches are used for building the popular [VIM Clutch][2].
@@ -15,7 +15,7 @@ Building
 
 The program is using the [hidapi][3] library and should work on Linux and OSX. To build on Linux:
 
-    sudo apt-get install libhidapi-dev
+    sudo apt-get install pkg-config libhidapi-dev
     git clone https://github.com/rgerganov/footswitch.git
     cd footswitch
     make
